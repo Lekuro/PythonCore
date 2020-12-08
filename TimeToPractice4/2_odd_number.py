@@ -1,4 +1,4 @@
-n = 100
+n = 101
 
 for i in range(n):
     if i % 2 == 0:
@@ -6,8 +6,9 @@ for i in range(n):
     print(i, end='_')
 print()
 
-i = 0
-while i < n:
-    if i % 2 == 1:
-        print(i, end='_')
-    i += 1
+for item in range(1, n, 2):
+    print(item, end='_')
+print()
+
+print(list(range(1, n, 2)))
+print([i for i in range(1, n, 2)])
