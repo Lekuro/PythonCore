@@ -42,9 +42,7 @@ def part_bag():
     while index < len(l_bags):
         if ', ' in l_bags[index]:
             bags = l_bags[index].split(', ')
-            # print(bags)
             l_bags[index:index + 1] = bags
-            # print(l_bags)
         index += 1
     print('----part_bag------')
 
@@ -62,7 +60,6 @@ def check_bag():
 
 
 counter = 0
-# for i in range(7):
 while check_bag():
     print('check_bag()', check_bag())
     # this loop takes a bag, parts it and gets the key,
@@ -71,13 +68,10 @@ while check_bag():
     for index in range(len(l_bags)):
         if l_bags[index] == 'no other bags':
             continue
-        #print('l_bags[index] =', l_bags[index])
         parted = l_bags[index].split()
         count = int(parted[0])
         counter += count
-        #print('parted =', parted, 'count =', count)
         key = ' '.join(parted[1:-1])
-        #print('key =', key)
         if key != 'shiny gold':
             l_bags[index] = d_bags[key] * count
             if l_bags[index][-1] == '.':
@@ -85,11 +79,9 @@ while check_bag():
             if '.' in l_bags[index]:
                 l_bags[index] = l_bags[index].split('.')
                 l_bags[index] = ', '.join(l_bags[index])
-        # print('l_bags[index] =', l_bags[index])
-        # print_bags()
     print('finish deeper')
-    # print_bags()
     part_bag()
-    # print_bags()
     print('lenght of magic:', len(l_bags))
     print('counter', counter)
+
+# print_bags()
