@@ -8,7 +8,7 @@ with open('data.txt', 'r') as file:
             lines.append(line)
 # print(lines)
 
-# part by ' bags contain ' create dict with key like name of bags, value is everything else
+# parts by ' bags contain ' create dict with key like name of bags, value is everything else
 # and list of all bags first part name of bags second is everything else
 d_bags = {}
 l_bags = []
@@ -32,9 +32,6 @@ def print_bags():
     #     print('key =', key, 'val =', d_bags[key])
 
 
-print_bags()
-
-
 def clean_bags():
     """
     line[1] partes by ', ' and replace other bag on 'shiny gold'
@@ -44,28 +41,16 @@ def clean_bags():
             continue
         parted_kinds = line[1].split(', ')
         for index in range(len(parted_kinds)):
-            #print('line[1]', line[1])
             parted = parted_kinds[index].split()
-            # count = int(parted[0]), count
-            # print(parted)
             parted = parted[1:-1]
-            # print(parted)
             key = ' '.join(parted)
-            #print('key', key)
             if key != 'shiny gold':
                 parted_kinds[index] = d_bags[key]
-            # print(parted_kinds[index])
-        # print(parted_kinds)
-        if all([i == '' for i in parted_kinds]):
-            line[1] = ''
+        filtered = list(filter(lambda item: item != '', parted_kinds))
+        if filtered:
+            line[1] = ', '.join(filtered)
         else:
-            line[1] = ', '.join(parted_kinds)
-        while ', , ' in line[1]:
-            line[1] = line[1].replace(', , ', ', ')
-        if line[1][-2:] == ', ':
-            line[1] = line[1][:-2]
-        if line[1][:2] == ', ':
-            line[1] = line[1][2:]
+            line[1] = ''
 
 
 def check_bags():
@@ -80,20 +65,17 @@ def check_bags():
         parted_kinds = line[1].split(', ')
         for index in range(len(parted_kinds)):
             parted = parted_kinds[index].split()
-            # count = int(parted[0])
-            # print(parted, count)
             parted = parted[1:-1]
-            # print(parted)
             key = ' '.join(parted)
             if key != 'shiny gold':
                 return True
     return False
 
 
+print_bags()
 while check_bags():
     clean_bags()
-    # print_bags()
-    print('i work hard')
+    print('I still work')
 
 # amount of 'shiny gold'
 count = 0
