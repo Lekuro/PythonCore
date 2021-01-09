@@ -1,9 +1,9 @@
 # https://github.com/csparpa/pyowm
 # https://home.openweathermap.org/api_keys
-
+from _2_config import token
 from pyowm import OWM
 
-owm = OWM('3908dc3e9c63aee5664b4a811b227153')
+owm = OWM(token)
 mgr = owm.weather_manager()
 
 city = input('Please enter the city: ')
